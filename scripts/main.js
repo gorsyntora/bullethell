@@ -9,7 +9,7 @@ let   MAP_HEIGHT = 650;
 const MODEL_LINE_ALPHA = 127;
 const NUM_STARS = 300;
 const PLAYER_FIRE_RATE = 8;
-const PLAYER_HP = 7;
+const PLAYER_HP = 16;
 const PLAYER_RADIUS = 6;
 const PLAYER_SPEED = 4;
 const SCORE_UPDATE_SPEED = 4;
@@ -364,6 +364,9 @@ function useSlowdown() {
     }
 }
 
+function onTouch(e) {
+    console.log('touched');
+}
 
 /* Main p5.js functions */
 
@@ -372,8 +375,12 @@ function setup() {
     let maxSize = MAP_HEIGHT + UI_PANEL_HEIGHT + 2;
     let h = windowHeight > maxSize ? maxSize : windowHeight;
     MAP_HEIGHT = h - UI_PANEL_HEIGHT - 2;
-    let c = createCanvas(600, h - 2);
+
+    /* Changed comparing to original*/
+    let c = createCanvas(600, 800);
     c.parent('game');
+
+
 
     // Configure p5.js
     angleMode(DEGREES);
@@ -465,4 +472,14 @@ function keyPressed() {
 
     // Toggle rendering stars
     if (key === 'Y') showStars = !showStars;
+}
+
+function touchMoved() {
+
+    console.log("Happened ");
+}
+
+function  mousePressed() {
+pl.fire();
+    console.log(" Pressed ");
 }
