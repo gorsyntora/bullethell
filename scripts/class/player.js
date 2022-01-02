@@ -53,6 +53,7 @@ class Player extends Ship {
             } else if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
                 this.vel = createVector(-diag, diag);
             } else {
+      
                 this.vel = createVector(-this.speed, 0);
             }
         } else if (keyIsDown(DOWN_ARROW) || keyIsDown(83)) {
@@ -106,5 +107,13 @@ class Player extends Ship {
     }
     onHitTop() {
         this.pos.y = this.mapTop + this.r * this.edgeRadius;
+    }
+    
+    move (xAxis) {
+            this.vel = createVector(-8*xAxis, 0);
+            var info = document.getElementById('player_info');
+            info.innerHTML =' I like yo moved';
+            super.act();
+            
     }
 }

@@ -402,7 +402,7 @@ function draw() {
     if (!paused) updateScore();
     status();
 
-    // Spawn enemies or boss
+    // Spawn enemies or bossp
     if (!paused && spawnTime === 0 && toSpawn > 0) {
         toSpawn--;
         if (toSpawn === 0) toSpawnBoss = true;
@@ -442,8 +442,8 @@ function keyPressed() {
     if (key === 'C' || key === 'M') useBomb();
 
     // Toggle FPS display
-    if (key === 'F') {
-        showFPS = !showFPS;
+    if (true) {
+     //   showFPS = !showFPS;
         document.getElementById('debug').style.display = showFPS ? 'block' : 'none';
         if (showFPS) {
             avgFPS = 0;
@@ -475,11 +475,20 @@ function keyPressed() {
 }
 
 function touchMoved() {
-
+  
+  var deltaX = pmouseX-mouseX;
+ // deltaX = Math.sign(deltaX);
+  
+ document.getElementById('console').innerHTML='xfire '+ deltaX;
+ 
+ pl.move(deltaX/4);
+ 
     console.log("Happened ");
 }
 
 function  mousePressed() {
 pl.fire();
     console.log(" Pressed ");
+    var debug = document.getElementById('console');
+    debug.innerHTML = 'fired';
 }
